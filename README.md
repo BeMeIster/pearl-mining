@@ -14,9 +14,11 @@ This is not an official guide. Just a practical starting point.
 - Hardware: GPU
 - Typical login format: `wallet.worker` or `username.worker`
 - Example pool endpoint: `prl.kryptex.network:7048`
-- Miners to check: SRBMiner, WildRig, PeakMiner
+- Miners to check: SRBMiner, PeakMiner, WildRig
 
 The examples below use one public Pearl pool endpoint. The same idea should work with other Pearl pools too, just replace the pool host, port and login format.
+
+Docker notes are separate: [`docs/docker.md`](docs/docker.md)
 
 ---
 
@@ -111,12 +113,26 @@ Replace `CHANGE_ME.rig1` with your real wallet or username.
 
 ---
 
-## Option 2: PeakMiner with Docker
+## Option 2: PeakMiner
 
-If you use Docker with NVIDIA GPU support, this is a quick way to test mining:
+PeakMiner can run directly, without Docker.
+
+Download PeakMiner from releases:
+
+```text
+https://github.com/peakminer/peakminer/releases
+```
+
+Unpack it, go to the miner folder and make the binary executable:
 
 ```bash
-docker run -it --rm --gpus all peakminer/peakminer:latest \
+chmod +x peakminer
+```
+
+Run it:
+
+```bash
+./peakminer \
   --coin pearl \
   -o prl.kryptex.network:7048 \
   -u CHANGE_ME.rig1
@@ -125,11 +141,13 @@ docker run -it --rm --gpus all peakminer/peakminer:latest \
 Example:
 
 ```bash
-docker run -it --rm --gpus all peakminer/peakminer:latest \
+./peakminer \
   --coin pearl \
   -o prl.kryptex.network:7048 \
   -u prl1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.rig1
 ```
+
+If the binary has a different name in your release archive, use that file name instead.
 
 ---
 
@@ -155,6 +173,18 @@ Check the miner help output for the exact algorithm name and options:
 
 ```bash
 ./wildrig-multi --help
+```
+
+---
+
+## Docker
+
+Docker is useful if you do not want to install the miner directly on the host.
+
+I moved Docker examples here:
+
+```text
+docs/docker.md
 ```
 
 ---
@@ -269,6 +299,7 @@ Useful links:
 ```text
 https://pool.kryptex.com/prl
 https://github.com/doktor83/SRBMiner-Multi/releases
+https://github.com/peakminer/peakminer/releases
 https://github.com/andru-kun/wildrig-multi/releases
 ```
 
@@ -296,7 +327,7 @@ Yes, Pearl / PRL is mined on GPU.
 
 ### Which miner should I use?
 
-Check SRBMiner, WildRig and PeakMiner first. Miner support changes often, so release notes are usually the best source.
+Check SRBMiner, PeakMiner and WildRig first. Miner support changes often, so release notes are usually the best source.
 
 ---
 
