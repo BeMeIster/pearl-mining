@@ -63,6 +63,7 @@ yourusername.WORKER_NAME
 | [RGMiner](#rgminer) | NVIDIA | Windows, Linux, HiveOS, MMPOS | Multiple pools |
 | [HydraX](#hydrax) | NVIDIA | Windows, Linux, HiveOS | Multiple pools |
 | [NPMiner](#npminer) | NVIDIA | Windows, Linux, HiveOS, MMPOS | Experimental Pearl support |
+| [N7Miner](#n7miner) | NVIDIA, AMD | Windows, Linux, HiveOS | Multiple pools |
 | [AlphaMiner](#alphaminer) | NVIDIA | Linux, HiveOS, Docker | AlphaPool-specific |
 
 ---
@@ -292,6 +293,25 @@ NushyPool example:
 ```
 
 Check the current release notes before using NPMiner with another Pearl pool.
+
+---
+
+## N7Miner
+
+Official downloads (v0.1.135): <https://github.com/Nigh7man/N7Miner-Releases/releases/tag/v0.1.135>
+Maintainer and support: <https://github.com/Nigh7man/N7Miner-Releases/issues>
+
+Pearl algorithm name: `pearlhash`. Supports NVIDIA and AMD GPUs, including mixed rigs. Developer fee: **1%**.
+
+### Windows (Kryptex pool)
+
+```bat
+n7miner.exe -a pearlhash -o prl-ru.kryptex.network:7048 -u WALLET_ADDRESS -w WORKER_NAME -p x -d auto
+```
+
+On Linux, download the Linux x64 release. For HiveOS, use the official [Custom Miner setup guide](https://github.com/Nigh7man/N7Miner-Releases/blob/main/docs/HIVEOS.md), which includes ready-to-import configurations for Kryptex, HeroMiners and LuckyPool.
+
+Verify the downloaded archive against `SHA256SUMS.txt` from the corresponding GitHub release. This is a third-party Custom Miner package, not built-in HiveOS integration.
 
 ---
 
